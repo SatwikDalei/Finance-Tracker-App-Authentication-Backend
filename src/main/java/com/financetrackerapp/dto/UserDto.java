@@ -1,36 +1,29 @@
-package com.financetrackerapp.entity;
+package com.financetrackerapp.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name="finance_auth")
-public class UserEntity {
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+public class UserDto {
 	private int id;
-	@Column
 	private String firstName;
-	@Column
 	private String lastName;
-	@Column
+	@NotEmpty(message="Username cannot be empty")
+	@NotNull(message ="Username connot be null")
 	private String userName;
-	@Column
+	@NotEmpty(message="Username cannot be empty")
+	@NotNull(message ="Username connot be null")
 	private String password;
-	@Column
+	@Email
 	private String email;
-	@Column
 	private String role;
-	public UserEntity() {
+	public UserDto() {
 		super();
 	}
-	public UserEntity(int id, String firstName, String lastName, String userName, String password, String email,
-			String role) {
+	public UserDto(int id, String firstName, String lastName,
+			@NotEmpty(message = "Username cannot be empty") @NotNull(message = "Username connot be null") String userName,
+			@NotEmpty(message = "Username cannot be empty") @NotNull(message = "Username connot be null") String password,
+			@Email String email, String role) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
